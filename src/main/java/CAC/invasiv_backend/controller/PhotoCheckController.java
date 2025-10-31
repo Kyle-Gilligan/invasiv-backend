@@ -1,4 +1,3 @@
-
 package CAC.invasiv_backend.controller;
 
 import CAC.invasiv_backend.dto.PhotoCheckRequest;
@@ -30,11 +29,8 @@ public class PhotoCheckController {
     }
     @PostMapping("/chat")
     public ChatResponse chat(@RequestBody ChatRequest request) {
-        // Get all identification results
         List<IdentificationResult> results = identificationService.getAllIdentificationResults();
-        // Format the identification results as context
         String context = formatIdentificationContext(results);
-        // Get response from AI service
         String response = aiService.chatWithContext(request.getMessage(), context);
         return new ChatResponse(response);
     }

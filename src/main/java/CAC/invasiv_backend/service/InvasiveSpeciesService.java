@@ -34,12 +34,6 @@ public class InvasiveSpeciesService {
                 .collect(Collectors.toCollection(HashSet::new));
     }
 
-    /**
-     * Checks if a species is invasive (regardless of region).
-     *
-     * @param speciesName The scientific name of the species to check.
-     * @return true if the species name exists in the index, false otherwise.
-     */
     public boolean isSpeciesInvasive(String speciesName) {
         if (invasiveIndex == null || invasiveIndex.isEmpty()) {
             return false;
@@ -66,7 +60,6 @@ public class InvasiveSpeciesService {
         if (s == null) {
             return "";
         }
-        // Also remove quotes that might surround the column data
         return s.trim().toLowerCase().replaceAll("^\"|\"$", "");
     }
 }
